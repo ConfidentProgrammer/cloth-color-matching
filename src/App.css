@@ -1,42 +1,64 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-}
-
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+.container {
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    justify-content: center; /* Center vertically */
+    align-items: center; /* Center horizontally */
+    height: 100vh; /* Full height of the viewport */
+    width: 100%; /* Ensure it takes full width */
+    margin: 0 auto; /* Center horizontally */
   }
-  to {
-    transform: rotate(360deg);
+  .file-input {
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #444; /* Darker border for dark mode */
+    background-color: #222; /* Dark background */
+    color: #fff; /* White text */
+    font-size: 16px;
+    cursor: pointer;
   }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+  
+  .suggested-colors-title {
+    margin-top: 20px;
+    color: #fff;
   }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-}
+  
+  .color-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(255, 255, 255, 0.1); /* Lighter shadow for dark mode */
+    background-color: #333; /* Dark card background */
+    transition: transform 0.2s;
+  }
+  
+  .color-item:hover {
+    transform: scale(1.02);
+  }
+  
+  .color-name {
+    margin-right: 10px;
+    font-weight: bold;
+    color: #fff;
+  }
+  
+  .color-swatch {
+    width: 70px; /* Set width for the color swatch */
+    height: 30px; /* Set height for the color swatch */
+    border: 1px solid #fff; /* White border for swatch */
+    border-radius: 4px; /* Rounded corners for the swatch */
+    margin-right: 10px; /* Space between the swatch and the hex code */
+    transition: transform 0.2s;
+  }
+  
+  .color-swatch:hover {
+    transform: scale(1.1);
+  }
+  
+  .hex-code {
+    margin: 0;
+    font-style: italic;
+    color: #ccc;
+  }
+  
