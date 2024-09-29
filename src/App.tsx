@@ -19,11 +19,13 @@ function UploadImage() {
   const [help, setHelp] = useState<
     { color_name: string; hex_code: string; description: string }[]
   >([]);
+  /* `Based on the selected color ${color} of a ${clothTop}, provide a list of matching ${clothBottom} neutral colors that would complement it and looks casual. Please consider current fashion trends, complementary color theory, and provide colors in the following format: color_name: hex code. Include at least 5 options. just give me colors in hex in json array format where it has color name and hex code
+`*/
   useEffect(() => {
     if (!color) return;
     const test = async () => {
       const ans = await getAiAnswer(
-        `Based on the selected color ${color} of a ${clothTop}, provide a list of matching ${clothBottom} neutral colors that would complement it and looks casual. Please consider current fashion trends, complementary color theory, and provide colors in the following format: color_name: hex code. Include at least 5 options. just give me colors in hex in json array format where it has color name and hex code
+        `Based on the selected color ${color} of a ${clothTop}, provide a list of matching ${clothBottom} colors that would complement it and are suitable for office wear or outdoor gatherings. The colors should be versatile, stylish, and appropriate for casual or semi-formal occasions. Please consider current fashion trends and complementary color theory. Provide at least 5 options in the following format: color_name: hex code. Return the colors in a JSON array format where each entry has the color name and hex code.
 `
       );
       if (ans) {
