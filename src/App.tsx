@@ -17,9 +17,9 @@ function HeroSection() {
     <header className="hero-section">
       <h1 className="hero-title">Fashion Color Matcher</h1>
       <p className="hero-description">
-        Upload an image of your clothing item, select its color, and discover
-        matching outfit ideas to enhance your style. Our AI-driven tool suggests
-        complementary colors based on current fashion trends.
+        Upload an image of your clothing item, select its color by touch/click,
+        and discover matching outfit ideas to enhance your style. Our AI-driven
+        tool suggests complementary colors based on current fashion trends.
       </p>
     </header>
   );
