@@ -108,6 +108,26 @@ body {
     animation: fadeInUp 0.5s forwards; /* Fade-in up animation */
   }
   
+  .upload-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px; /* Add some margin for spacing */
+  }
+  
+  .lottie-animation {
+    width: 100%;  /* Full width of the container */
+    height: auto; /* Maintain aspect ratio */
+    max-width: 400px; /* Set a max width for larger screens */
+    margin: 20px 0; /* Add some margin for spacing */
+  }
+  
+  /* You can also set specific media queries for additional responsiveness */
+  @media (max-width: 768px) {
+    .lottie-animation {
+      max-width: 300px; /* Reduce max width on smaller screens */
+    }
+  }
   @keyframes fadeInUp {
     from {
       transform: translateY(10px);

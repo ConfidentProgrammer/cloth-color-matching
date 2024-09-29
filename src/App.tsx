@@ -2,11 +2,11 @@ import { useEffect, useState } from "react";
 import CanvasColorPicker from "./CanvasColorPicker";
 import { getAiAnswer } from "./AI";
 import "./App.css";
+import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 
 function App() {
   return (
     <>
-      <HeroSection />
       <UploadImage />
     </>
   );
@@ -62,6 +62,14 @@ function UploadImage() {
 
   return (
     <div className="upload-section">
+      <HeroSection />
+      <DotLottieReact
+        src="https://lottie.host/ee880564-c392-4b6c-9bb6-f5d5aa076b4d/oLWs38u8DU.json"
+        className="lottie-animation"
+        loop
+        autoplay
+      />
+
       <input type="file" onChange={handleImageUpload} className="file-input" />
       <CanvasColorPicker
         image={image!}
