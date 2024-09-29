@@ -1,4 +1,5 @@
 import { useRef, useState, useEffect } from "react";
+import "./CanvasColorPicker.css"; // Importing the CSS file
 
 const CanvasColorPicker = ({
   image,
@@ -30,34 +31,30 @@ const CanvasColorPicker = ({
     if (!ctx) return;
 
     const img = new Image();
-    //const imageUrl = URL.createObjectURL(image);
-    img.src = `${image}`; // replace with your image URL
+    img.src = `${image}`; // Replace with your image URL
     img.crossOrigin = "Anonymous";
     img.onload = () => {
       ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-      //URL.revokeObjectURL(imageUrl); // Clean up the object URL after use
     };
   }, [image]);
 
   return (
-    <div>
+    <div className="color-picker-container">
       <canvas
         ref={canvasRef}
         width={300}
         height={300}
         onClick={getColorFromCanvas}
-        style={{ border: "1px solid black", cursor: "crosshair" }}
+        className="color-canvas"
       />
-      <div style={{ marginTop: "10px" }}>
-        Picked Color: <span style={{ color }}>{color}</span>
+      <div className="picked-color-container">
+        <span className="picked-color-text">Picked Color:</span>
+        <span className="picked-color" style={{ color }}>
+          {color}
+        </span>
         <div
-          style={{
-            backgroundColor: color,
-            width: "50px",
-            height: "50px",
-            display: "inline-block",
-            border: "1px solid black",
-          }}
+          className="picked-color-swatch"
+          style={{ backgroundColor: color }}
         />
       </div>
     </div>

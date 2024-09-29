@@ -6,8 +6,22 @@ import "./App.css";
 function App() {
   return (
     <>
+      <HeroSection />
       <UploadImage />
     </>
+  );
+}
+
+function HeroSection() {
+  return (
+    <header className="hero-section">
+      <h1 className="hero-title">Fashion Color Matcher</h1>
+      <p className="hero-description">
+        Upload an image of your clothing item, select its color, and discover
+        matching outfit ideas to enhance your style. Our AI-driven tool suggests
+        complementary colors based on current fashion trends.
+      </p>
+    </header>
   );
 }
 
@@ -19,26 +33,23 @@ function UploadImage() {
   const [help, setHelp] = useState<
     { color_name: string; hex_code: string; description: string }[]
   >([]);
-  /* `Based on the selected color ${color} of a ${clothTop}, provide a list of matching ${clothBottom} neutral colors that would complement it and looks casual. Please consider current fashion trends, complementary color theory, and provide colors in the following format: color_name: hex code. Include at least 5 options. just give me colors in hex in json array format where it has color name and hex code
-`*/
+
   useEffect(() => {
     if (!color) return;
     const test = async () => {
       const ans = await getAiAnswer(
-        `Based on the selected color ${color} of a ${clothTop}, provide a list of matching ${clothBottom} colors that would complement it and are suitable for office wear or outdoor gatherings. The colors should be versatile, stylish, and appropriate for casual or semi-formal occasions. Please consider current fashion trends and complementary color theory. Provide at least 5 options in the following format: color_name: hex code. Return the colors in a JSON array format where each entry has the color name and hex code.
-`
+        `Based on the selected color ${color} of a ${clothTop}, provide a list of matching ${clothBottom} colors that would complement it and are suitable for office wear or outdoor gatherings. The colors should be versatile, stylish, and appropriate for casual or semi-formal occasions. Please consider current fashion trends and complementary color theory. Provide at least 5 options in the following format: color_name: hex code. Return the colors in a JSON array format where each entry has the color name and hex code.`
       );
       if (ans) {
         try {
-          // Parse the string to a JavaScript object or array
           const parsedData = JSON.parse(ans);
-          setHelp(parsedData); // Set the parsed array directly
+          setHelp(parsedData);
         } catch (error) {
           console.error("Failed to parse JSON:", error);
-          setHelp([]); // Set an empty array or a fallback value in case of an error
+          setHelp([]);
         }
       } else {
-        setHelp([]); // Fallback if no data is available
+        setHelp([]);
       }
     };
     test();
@@ -48,8 +59,9 @@ function UploadImage() {
     if (!e.target.files) return;
     setImage(URL.createObjectURL(e.target.files[0]));
   }
+
   return (
-    <>
+    <div className="upload-section">
       <input type="file" onChange={handleImageUpload} className="file-input" />
       <CanvasColorPicker
         image={image!}
@@ -58,13 +70,7 @@ function UploadImage() {
         }}
       />
       <h2 className="suggested-colors-title">Suggested Colors:</h2>
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          gap: "15px",
-        }}
-      >
+      <div className="color-list">
         {help.map((item, index) => (
           <div key={index} className="color-item">
             <h4 className="color-name">{item.color_name}</h4>
@@ -78,7 +84,7 @@ function UploadImage() {
           </div>
         ))}
       </div>
-    </>
+    </div>
   );
 }
 
